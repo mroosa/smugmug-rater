@@ -1,0 +1,5 @@
+<?php
+
+$appName = 'SmugMug gallery image rater/1.0';
+$pubKey = '';
+$albumKey = '';

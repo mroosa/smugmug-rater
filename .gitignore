@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+
+# vendor dir
+vendor/
+
+# settings/config file
+template/settings/config.php
+
+# only include the empty json file
+data/*
+!data/ratings-empty.json

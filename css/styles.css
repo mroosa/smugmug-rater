@@ -1,0 +1,239 @@
+@charset "UTF-8";
+html * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #191919;
+  color: #999999;
+  font-family: "Oswald", Arial, sans-serif;
+  font-weight: 100;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.contain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header, footer {
+  position: absolute;
+  width: 100%;
+  background: #f90;
+}
+
+header {
+  top: 0;
+}
+
+footer {
+  bottom: 0;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+}
+
+section.check_ratings table {
+  max-width: 800px;
+  width: 100%;
+  margin: 20px;
+}
+section.check_ratings th, section.check_ratings td {
+  padding: 5px;
+}
+section.check_ratings th {
+  font-weight: 400;
+  color: #cccccc;
+  background: #333333;
+}
+section.check_ratings th[data-sortable="1"] {
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+section.check_ratings th[data-sortable="1"]:hover {
+  background-color: #444444;
+}
+section.check_ratings th span {
+  position: relative;
+}
+section.check_ratings th span:after {
+  content: "▲";
+  opacity: 0;
+  font-size: 65%;
+  margin-left: 5px;
+  transition: transform 0.25s, top 0.25s;
+  position: absolute;
+  right: -17px;
+  top: 5px;
+}
+section.check_ratings th[data-sort=asc] span:after {
+  opacity: 1;
+  transform: rotate(0deg);
+  top: 5px;
+}
+section.check_ratings th[data-sort=dsc] span:after {
+  opacity: 1;
+  transform: rotate(180deg);
+  top: 8px;
+}
+section.check_ratings tr {
+  transition: background-color 0.25s;
+}
+section.check_ratings tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+section.check_ratings tr:nth-of-type(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+section.check_ratings tr:nth-of-type(even):hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+section.image {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+}
+section.image figure {
+  margin: 0;
+  padding: 0;
+  background: url("../gfx/Spinner-1s-200px.gif") center center no-repeat #282828;
+}
+section.image figure img {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  display: block;
+  max-height: 90vh;
+  max-width: 90vw;
+  object-fit: contain;
+}
+
+#progress {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+#progress span {
+  color: #cccccc;
+}
+.image-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.image-nav li {
+  position: fixed;
+  top: 0;
+  display: block;
+  height: 100vh;
+  width: 100px;
+}
+.image-nav li#next-image {
+  right: 0;
+}
+.image-nav li#prev-image {
+  left: 0;
+}
+.image-nav li a {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  transition: background-color 0.25s, color 0.25s;
+  color: #666666;
+  font-size: 32px;
+  text-decoration: none;
+}
+.image-nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.star {
+  font-size: 1rem;
+  color: #666666;
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 99;
+}
+.star:before {
+  position: absolute;
+  z-index: -1;
+  transition: 0.25s opacity;
+  opacity: 0;
+  content: "★";
+}
+.star:hover, .star.below {
+  color: #cccccc;
+}
+.star:hover:before, .star.below:before {
+  opacity: 1;
+}
+
+.star_rating {
+  user-select: none;
+  color: #666666;
+  background-color: transparent;
+  text-align: center;
+  z-index: 99;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.star_rating .button_wrap {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+}
+.star_rating .button_wrap.set .star {
+  color: #cccccc;
+}
+.star_rating .button_wrap.set .star.hollow {
+  color: #666666;
+}
+.star_rating .button_wrap.set .star.hollow:hover, .star_rating .button_wrap.set .star.hollow.below {
+  color: #cccccc;
+}
+.star_rating .button_wrap.set:hover .star:not(.below) {
+  color: #666666;
+}
+.star_rating .current_rating {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 5px 0;
+}
+.star_rating .current_rating.set {
+  color: #cccccc;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,275 @@
+@charset "UTF-8";
+
+@import "fonts";
+@import "variables";
+
+html * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #191919;
+  color:#999999;
+
+  font-family: "Oswald",Arial, sans-serif;
+  font-weight: 100;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.contain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header,footer {
+  position: absolute;
+  width: 100%;
+  background: #f90;
+}
+header {
+  top: 0;
+}
+footer {
+  bottom: 0;
+}
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+}
+
+section.check_ratings {
+  table {
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+  }
+  th,td {
+    padding: 5px;
+  }
+  th {
+    font-weight: 400;
+    color: #cccccc;
+    background: #333333;
+
+    &[data-sortable="1"] {
+      cursor: pointer;
+      transition: background-color .25s;
+
+      &:hover {
+        background-color: #444444;
+      }
+    }
+    span {
+      position: relative;
+
+      &:after {
+        content: "▲";
+        opacity: 0;
+        font-size: 65%;
+        margin-left: 5px;
+        transition: transform .25s, top .25s;
+        position: absolute;
+        right: -17px;
+        top: 5px;
+      }
+    }
+    &[data-sort="asc"] {
+      span:after {
+        opacity: 1;
+        transform: rotate(0deg);
+        top: 5px;
+      }
+    }
+    &[data-sort="dsc"] {
+      span:after {
+        opacity: 1;
+        transform: rotate(180deg);
+        top: 8px;
+      }
+    }
+  }
+  tr {
+    transition: background-color .25s;
+  }
+  tr:hover {
+    background: rgba(255,255,255,.05);
+  }
+  tr:nth-of-type(even) {
+    background: rgba(255,255,255,.03);
+    &:hover {
+      background: rgba(255,255,255,.07);
+    }
+  }
+}
+
+section.image {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+
+  figure {
+    margin: 0;
+    padding: 0;
+
+    background:url("../gfx/Spinner-1s-200px.gif") center center no-repeat #282828;
+
+    img {
+      box-shadow: 2px 2px 10px rgba(0,0,0,.5);
+      display: block;
+      max-height: 90vh;
+      max-width: 90vw;
+      object-fit: contain;
+    }
+  }
+}
+
+#progress {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+
+  span {
+    color: #cccccc;
+  }
+  #cur {
+
+  }
+  #total {
+
+  }
+}
+
+.image-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    position: fixed;
+    top: 0;
+    display: block;
+    height: 100vh;
+    width: 100px;
+
+    &#next-image {
+      right: 0;
+    }
+    &#prev-image {
+      left: 0;
+    }
+
+    a {
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      height: 100%;
+      width: 100%;
+      transition: background-color .25s, color .25s;
+      color: #666666;
+      font-size: 32px;
+      text-decoration: none;
+
+      &:hover {
+        background-color: rgba(255,255,255,.1);
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.star{
+  font-size: 1rem;
+  color: #666666;
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 99;
+
+  &:before {
+    position: absolute;
+    z-index: -1;
+    transition: .25s opacity;
+    opacity: 0;
+    content: "★";
+  }
+
+  &:hover,
+  &.below {
+    color: #cccccc;
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+.star_rating{
+  user-select: none;
+  color: #666666;
+  background-color: transparent;
+  text-align: center;
+  z-index: 99;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+
+  .button_wrap {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+
+    &.set {
+      .star {
+        color: #cccccc;
+        &.hollow {
+          color: #666666;
+          &:hover,
+          &.below {
+            color: #cccccc;
+          }
+        }
+      }
+      &:hover {
+        .star:not(.below) {
+          color: #666666;
+        }
+      }
+    }
+  }
+
+  .current_rating {
+    font-size: .8rem;
+    margin: 0;
+    padding: 5px 0;
+
+    &.set {
+      color: #cccccc;
+    }
+  }
+}
