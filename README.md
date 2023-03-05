@@ -6,9 +6,9 @@ The user is presented with images from a given album one at a time and can rate 
 
 ## Dependencies
 
-PHP >= 7.3.0 (per phpSmug)
-SmugMug API Key - Currently only set up to use a public API key for public albums.
-[phpSmug by lildude](https://github.com/lildude/phpSmug) - A simple object orientated wrapper for the new SmugMug API v2, written in PHP. See the phpSmug docs for more info on usage.
+* PHP >= 7.3.0 (per phpSmug)
+* SmugMug API Key - Currently only set up to use a public API key for public albums.
+* [phpSmug by lildude](https://github.com/lildude/phpSmug) - A simple object orientated wrapper for the new SmugMug API v2, written in PHP. See the phpSmug docs for more info on usage.
 
 ##Setup
 After cloning the repo, install phpSmug via composer (recommended, see phpSmug documentation for other installation options):
